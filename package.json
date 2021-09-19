@@ -1,12 +1,19 @@
 {
   "name": "npm-app3",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "sonar-scanner": "sonar-scanner",
+    "postinstall": "echo 'Cleaning up.' && npm run version",
+    "version": "NOME_PROJETO=$(node -p -e \"require('./package.json').name\") && VERSAO_PROJETO=$(node -p -e \"require('./package.json').version\") && sed -i \"s/#NOME_PROJETO/${NOME_PROJETO}/g\" sonar-project.properties && sed -i \"s/#VERSAO_PROJETO/${VERSAO_PROJETO}/g\" sonar-project.properties",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cpf": "^2.0.1",
+    "sonar-scanner": "^3.1.0"
+  }
 }
